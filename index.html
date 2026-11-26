@@ -1,10 +1,19 @@
-<div id="game-container">
-  <div id="enemy-section"></div>
-  <div id="dialogue-box">* Te enfrentas a un contrincante difícil.</div>
-  <div id="menu-buttons">
-    <span>[ FIGHT ]</span>
-    <span>[ ACT ]</span>
-    <span>[ ITEM ]</span>
-    <span>[ MERCY ]</span>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Undertale Clone</title>
+</head>
+<body style="background: black; color: white; font-family: monospace; text-align: center; margin-top: 50px;">
+  <div id="game-container">
+    <div id="dialogue-box" style="border: 4px solid white; padding: 20px; margin: 20px auto; width: 500px; text-align: left;">* Te enfrentas a un contrincante difícil.</div>
+    <div id="menu-buttons">
+      <button onclick="accion(\"FIGHT\")">[ FIGHT ]</button>
+      <button onclick="accion(\"ACT\")">[ ACT ]</button>
+      <button onclick="accion(\"ITEM\")">[ ITEM ]</button>
+      <button onclick="accion(\"MERCY\")">[ MERCY ]</button>
+    </div>
   </div>
-</div>
+  <script src="script.js"></script>
+</body>
+</html>
