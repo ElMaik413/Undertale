@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mercy Mode</title>
+  <style>
+    body {
+      background-color: black;
+      color: white;
+      font-family: monospace;
+      text-align: center;
+      margin: 0;
+      padding: 60px 20px;
+    }
+
+    #mercy-container {
+      max-width: 640px;
+      margin: 0 auto;
+    }
+
+    h1 {
+      font-size: 24px;
+      margin-bottom: 30px;
+    }
+
+    /* Caja de diálogo clásica estilo Undertale (conectada con script.js) */
+    #dialogue-box {
+      border: 4px solid white;
+      padding: 24px;
+      min-height: 70px;
+      font-size: 18px;
+      line-height: 1.5;
+      text-align: left;
+      margin-bottom: 30px;
+      box-sizing: border-box;
+    }
+
+    .mercy-options {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 14px;
+      margin-bottom: 36px;
+    }
+
+    .mercy-btn {
+      background-color: black;
+      color: #ff9900;
+      border: 2px solid #ff9900;
+      font-family: monospace;
+      font-size: 16px;
+      padding: 10px 18px;
+      cursor: pointer;
+    }
+
+    .mercy-btn:hover,
+    .mercy-btn:focus {
+      color: yellow;
+      border-color: yellow;
+      outline: none;
+    }
+
+    .back-link {
+      color: yellow;
+      font-size: 18px;
+      text-decoration: none;
+    }
+
+    .back-link:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div id="mercy-container">
+    <h1>* ¡Entraste a la zona de Piedad (MERCY)!</h1>
+
+    <!-- Elemento utilizado por accion("MERCY") en script.js -->
+    <div id="dialogue-box">* Evaluando opciones de piedad...</div>
+
+    <!-- Botones didácticos para interactuar en el modo MERCY -->
+    <div class="mercy-options">
+      <button type="button" class="mercy-btn" id="btn-huir">* HUIR</button>
+      <button type="button" class="mercy-btn" id="btn-perdonar">* PERDONAR</button>
+      <button type="button" class="mercy-btn" id="btn-tregua">* TREGUA</button>
+      <button type="button" class="mercy-btn" id="btn-rendirse">* RENDIRSE</button>
+    </div>
+
+    <a href="index.html" class="back-link">[ Regresar al menú ]</a>
+  </div>
+
+  <!-- Conexión con el archivo principal de lógica -->
+  <script src="script.js"></script>
+  <script>
+    const cajaDialogo = document.getElementById("dialogue-box");
+
+    // Ejecuta la función accion("MERCY") definida en script.js
+    function ejecutarAccionPrincipal() {
+      if (typeof accion === "function") {
+        accion("MERCY");
+      } else {
+        // Respaldo en caso de abrir mercy.html sin script.js en la misma carpeta
+        cajaDialogo.innerHTML = "* Intentas huir, pero el combate apenas comienza.";
+      }
+    }
+
+    // Lanza el diálogo de MERCY automáticamente al cargar la pantalla
+    window.addEventListener("DOMContentLoaded", ejecutarAccionPrincipal);
+
+    document.getElementById("btn-huir").addEventListener("click", ejecutarAccionPrincipal);
+
+    document.getElementById("btn-perdonar").addEventListener("click", function () {
+      cajaDialogo.innerHTML = "* Extiendes tu mano en señal de paz. El enemigo parece pensarlo...";
+    });
+
+    document.getElementById("btn-tregua").addEventListener("click", function () {
+      cajaDialogo.innerHTML = "* Propones una tregua amistosa. La tensión en la sala disminuye.";
+    });
+
+    document.getElementById("btn-rendirse").addEventListener("click", function () {
+      cajaDialogo.innerHTML = "* Bajas la guardia por un instante, pero tu determinación no te deja rendirte.";
+    });
+  </script>
+</body>
+</html>
